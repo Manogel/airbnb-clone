@@ -1,7 +1,9 @@
 import axios from 'axios';
 
+export const rota_base = '10.114.64.42';
+
 const api = axios.create({
-  baseURL: 'http://192.168.1.132:3333',
+  baseURL: 'http://10.114.64.42:3333',
 });
 
 export default api;

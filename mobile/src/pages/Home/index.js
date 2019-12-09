@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {AsyncStorage} from 'react-native';
+import {AsyncStorage, ScrollView} from 'react-native';
 
 import {Container} from './styles';
 import logo from '~/assets/logo.png';
@@ -21,9 +21,11 @@ export default function Home() {
   return (
     <Container>
       <Header />
-      {techs.map(t => (
-        <SpotList key={t} tech={t} />
-      ))}
+      <ScrollView>
+        {techs.map(t => (
+          <SpotList key={t} tech={t} />
+        ))}
+      </ScrollView>
     </Container>
   );
 }

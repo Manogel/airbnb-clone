@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import {AsyncStorage} from 'react-native';
 
 import {
@@ -14,6 +14,7 @@ import logo from '~/assets/logo.png';
 import api from '~/services/api';
 
 export default function Login({navigation}) {
+  const techRef = useRef();
   const [email, setEmail] = useState('');
   const [techs, setTechs] = useState('');
 
@@ -48,6 +49,7 @@ export default function Login({navigation}) {
           autoCorrect={false}
           value={email}
           onChangeText={setEmail}
+          onSubmitEditing={() => techRef.current.focus()}
         />
 
         <Label>TECNOLOGIAS *</Label>
@@ -58,6 +60,8 @@ export default function Login({navigation}) {
           autoCorrect={false}
           value={techs}
           onChangeText={setTechs}
+          ref={techRef}
+          onSubmitEditing={handleLogin}
         />
 
         <Button onPress={handleLogin}>
